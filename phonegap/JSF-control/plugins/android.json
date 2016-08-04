@@ -1,0 +1,72 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "space.freegreen.jsfcontrol"
+        }
+    },
+    "dependent_plugins": {}
+}
