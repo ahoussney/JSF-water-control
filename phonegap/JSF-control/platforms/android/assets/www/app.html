@@ -25,13 +25,13 @@
                 <div class="row text-center">
                     <div class="col-md-12">
                         <img id="logo" class="text-center animated fadeInDown flipInY" src="img/jsf-logo.png" />
-                        <h2 class="text-center animated fadeInDown">Jacob Springs Farm Control, Sweet</h2>
-                        <h3 class="text-center animated fadeInDown">Flip switch to turn on pump</h3>
+                        <h2 class="text-center animated fadeInDown">Jacob Springs Farm Control</h2>
+                        <h3>...sweeeet</h3>
                     </div>
                 </div>
             </div>
 
-            <div id="control">
+            <!--<div id="control1">
               <div class="row text-center">
                 <div class="col-md-12">
                   <label class="switch">
@@ -40,17 +40,35 @@
                   </label>
                 </div>
               </div>
+            </div>-->
+
+            <div id="control2">
+              <div class="row text-center">
+                <div class="col-md-12">
+                  <label class="fillTank">
+                    <button type="button" class="btn btn-success" id="fillTank" onclick="fillTank(90)">Fill tank (90 mins on)</button>
+                  </label>
+                </div>
+              </div>
             </div>
 
-            <div id="result" class="container">
+            <div id="control2">
+              <div class="row text-center">
+                <div class="col-md-12">
+                  <label class="pumpOff">
+                    <button type="button" class="btn btn-danger" id="pumpOff" onclick="pumpOff()">Turn off pump</button>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div id="pumpStatusDiv">
                 <div class="row text-center">
                     <div class="col-md-12">
-                          <img id="image" class="img-responsive center-block" />
-                          <p id="pressure"></p>
+                        <h3>Pump is <strong><span id="pumpStatus"></span></strong></h3>
                     </div>
                 </div>
             </div>
-        </div>
 
         <script src="js/app.js" type="text/javascript"></script>
 

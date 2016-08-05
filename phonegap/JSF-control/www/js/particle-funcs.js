@@ -106,7 +106,7 @@ function pumpStatus() {
           {},
           function(data) {
               console.log(data);
-              $("#pumpStatus").html(data.result);
+              $("#pumpStatus").text(data.result);
           });
 }
 
