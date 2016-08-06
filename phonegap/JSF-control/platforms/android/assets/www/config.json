@@ -1,5 +1,5 @@
 {
-  "eventPrefix" : "jsf/waterSystem",
+  "eventPrefix" : "jsf/waterSystem/",
   "deviceID" : "1a0030001747343339383037",
 	"access_token" : "d9b7e4e94f6d0a743b57aff6d4d7dd3a6bdf4739"
 }

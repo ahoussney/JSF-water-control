@@ -63,30 +63,38 @@ function getPressure() {
 }
 
 function switchPump() {
-  if (document.getElementById("pumpCheck").checked == true) {
-    eventStr = 'turn on pump';
+  if (document.getElementById("pumpStatus").checked == true) {
+    eventPre = eventPrefix + "pumpOn";
   }
   else {
-    eventStr = 'turn off pump';
+    eventPre = eventPrefix + "pumpOff";
   }
+
+  minsOn = $('#timeOn').find(":selected").text();
+  console.log("mins on: " + minsOn);
 
   var requestURL = "https://api.spark.io/v1/devices/events";
   $.post( requestURL,
-          { name: eventPrefix, data: eventStr, access_token: token },
+          { name: eventPre, data: minsOn, access_token: token },
           function(data) {
               console.log(data);
           });
 }
+$(function() {
+$('#pumpStatus').change(function() {
+  console.log("changed");
+  switchPump();
+});
+});
 
 function fillTank(minsOn) {
-  eventStr = 'turn on pump';
+  eventStr = minsOn;
   var requestURL = "https://api.spark.io/v1/devices/events";
   $.post( requestURL,
-          { name: eventPrefix, data: eventStr, access_token: token },
+          { name: eventPrefix, data: minsOn, access_token: token },
           function(data) {
               console.log(data);
           });
-  setTimeout(pumpOff, minsOn*60*1000);
 }
 
 function pumpOff() {
@@ -105,8 +113,11 @@ function pumpStatus() {
   $.get( requestURL,
           {},
           function(data) {
-              console.log(data);
-              $("#pumpStatus").text(data.result);
+              if (data.result == "on" && document.getElementById("pumpStatus").checked == false) {
+                $('#pumpStatus').bootstrapToggle('on');
+              } else if (document.getElementById("pumpStatus").checked == true) {
+                $('#pumpStatus').bootstrapToggle('off');
+              }
           });
 }
 

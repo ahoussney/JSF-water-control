@@ -110,3 +110,8 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+select {
+display: block;
+margin: 0 auto;
+}
