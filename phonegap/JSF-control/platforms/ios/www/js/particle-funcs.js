@@ -121,4 +121,16 @@ function pumpStatus() {
           });
 }
 
+function minsOnLeft() {
+  if (document.getElementById("pumpStatus").checked == true) {
+    variable = "minsOnLeft";
+    var requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/" + variable + "?access_token=" + token;
+    $.get( requestURL,
+            {},
+            function(data) {
+                $('#minsLeft').text("Pump shutting off in " + data.result);
+            });
+  }
+}
+
 var interval = setInterval(pumpStatus, 2000);
