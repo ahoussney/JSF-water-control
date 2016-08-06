@@ -1,8 +1,12 @@
 var token, deviceID, eventPrefix
 var eventStr;
 
+$(function() {
+    $('#pumpStatus').bootstrapToggle();
+  })
+
 $.getJSON("config.json", function(json) {
-    console.log(json); // this will show the info it in firebug console
+    //console.log(json); // this will show the info it in firebug console
     token = json["access_token"];
     deviceID = json["deviceID"];
     eventPrefix = json["eventPrefix"];
@@ -115,8 +119,10 @@ function pumpStatus() {
           function(data) {
               if (data.result == "on" && document.getElementById("pumpStatus").checked == false) {
                 $('#pumpStatus').bootstrapToggle('on');
+                $('#pumpStatus').prop("data-on", "Pump On");
               } else if (document.getElementById("pumpStatus").checked == true) {
                 $('#pumpStatus').bootstrapToggle('off');
+                $('#pumpStatus').prop("data-off", "Pump Off");
               }
           });
 }
@@ -134,3 +140,10 @@ function minsOnLeft() {
 }
 
 var interval = setInterval(pumpStatus, 2000);
+
+$(function() {
+  $('#pumpStatus').bootstrapToggle({
+    on: 'Pump On',
+    off: 'Pump Off'
+  });
+});
