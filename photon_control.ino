@@ -3,7 +3,6 @@ String eventPrefix = "jsf/waterSystem/";
 int relayPin = 0;
 int minsOn = 0;
 int minsOnLeft = 0;
-bool pumpOn = false;
 unsigned long startTime = 0;
 unsigned long pumpOnTime; // keeps track of when pump was turned on
 unsigned long pumpOffTime; // keeps track of when pump was turned off
@@ -18,13 +17,12 @@ void setup() {
 }
 
 void loop() {
-  if (pumpOn) {
+  if (pumpStatus == "on") {
     minsOnLeft = minsOn - (millis() - startTime)/1000;
     if (minsOnLeft < 0)
     {
       digitalWrite(relayPin, 0);
       pumpStatus = "off";
-      pumpOn = false;
     }
   }
 }
@@ -34,7 +32,6 @@ void pumpOnHandler(String event, String data)
     digitalWrite(relayPin, 1);
     pumpStatus = "on";
     pumpOnTime = millis();
-    pumpOn = true;
     minsOn = int data;
 }
 
@@ -42,5 +39,4 @@ void pumpOffHandler(String event, String data)
 {
   digitalWrite(relayPin, 0);
   pumpStatus = "off";
-  pumpOn = false;
 }
