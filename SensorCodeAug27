@@ -1,0 +1,69 @@
+ //Thanks to Zef for the method used to determine when the pump is on in this code and to Nate for the rest.
+
+double pressure;
+bool pumpOn; //domestic water pressure pump status
+int avgCounts = 1000;
+unsigned long measureInterval = 10000; // measure pressure every 10s
+unsigned long lastMeasuredAt = 0; // for keeping track of last pressure measurement time
+int pressurePin = A0;
+String eventPrefix = "jsf/waterSystem/";
+
+double emptyThreshold = 350;
+double deltaThreshold = 70;
+
+double reading;
+double previousReading;
+double oldestReading;
+
+// bool housePumpWasJustOn
+// int recordPump
+
+void setup() {
+    pinMode(pressurePin, INPUT);
+
+// subscribe to this from a terminal with the API like:
+// curl https://api.particle.io/v1/devices/events/pressure?access_token=1234
+// https://api.particle.io/v1/devices/280037000a47353138383138/pressure?access_token=d9b7e4e94f6d0a743b57aff6d4d7dd3a6bdf4739&format=raw
+  Particle.variable("pressure", pressure);
+  Particle.variable("housePumpOn", pumpOn); 
+//   Particle.variable("recordPump", recordPump); 
+}
+
+void loop() {
+  if ((millis()) - lastMeasuredAt > measureInterval) {
+    measurePressure();
+    lastMeasuredAt = millis(); //millis Returns the number of milliseconds (as unsigned long) since the device began running the current program. 
+//This number will overflow (go back to zero), after approximately 49 days`
+  }
+}
+void measurePressure() {
+    oldestReading = previousReading;
+    previousReading = reading;
+    reading = readAveragePressure();
+    
+    if (reading < emptyThreshold) {
+        pumpOn = true;
+    } else {
+        pumpOn = false;
+        if (withinThreshold(reading, previousReading) && withinThreshold(previousReading, oldestReading)) {
+            pressure = reading;
+            Particle.publish(eventPrefix + "pressureSensor/pressure", String(pressure));
+        }
+    }
+}
+
+bool withinThreshold(int one, int two) {
+    return abs(one - two) < deltaThreshold;
+}
+
+double readAveragePressure() {
+    double average = 0;
+    for (int i = 0; i < avgCounts; i++) {
+        average += analogRead(pressurePin);
+    }
+    return average / avgCounts;
+}
+
+// int recordHousePumpOns() {
+//     if ()
+// }
